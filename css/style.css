@@ -1,0 +1,31 @@
+li{
+    list-style-type: none;
+}
+.header-search-div {
+    display: flex;
+}
+.input-search {
+    margin:0 auto;
+}
+
+.section-catalog {
+}
+.container {
+}
+.list-books {
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 25px;
+}
+.list-item {
+    
+}
+.div-in-item {
+
+}
+.img-book {
+}
+.name-book {
+}
+.description-book {
+}
