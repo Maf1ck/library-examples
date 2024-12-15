@@ -10,21 +10,25 @@
 <body>
     <main>    
         <header>
-            <div class="header-search-div">
-                <input type="text" class="input-search" name="search" placeholder="search">
+            <div class="header-div">
+                <div class="header-search-div">
+                    <input type="text" class="input" name="search" placeholder="search" id="search-input">
+                    <button type="submit" class="btn" id="button-search">Search</button>
+                </div>
+         
             </div>
         </header>
         <section class="section-catalog">
             <div class="container">
                 <ul class="list-books">
-                    <li class="list-item">
+                    <li class="list-item" id="harry-potter">
                         <div class="div-in-item">
                             <img src="" alt="" class="img-book">
                             <h3 class="name-book">Harry Potter</h3>
                             <p class="description-book">greate book</p>
                         </div>
                     </li>
-                    <li class="list-item">
+                    <li class="list-item" id="dzheyn-eir">
                         <div class="div-in-item">
                             <img src="" alt="" class="img-book">
                             <h3 class="name-book">Dzheyn Eir</h3>
@@ -34,11 +38,25 @@
                     <li class="list-item">
                         <div class="div-in-item">
                             <img src="" alt="" class="img-book">
-                            <h3 class="name-book">Harry Potter</h3>
+                            <h3 class="name-book">Kobzar</h3>
                             <p class="description-book">greate book</p>
                         </div>
                     </li>
                     <li class="list-item">
+                        <div class="div-in-item">
+                            <img src="" alt="" class="img-book">
+                            <h3 class="name-book">history</h3>
+                            <p class="description-book">greate book</p>
+                        </div>
+                    </li>
+                    <li class="list-item">
+                        <div class="div-in-item">
+                            <img src="" alt="" class="img-book">
+                            <h3 class="name-book">chornobyl</h3>
+                            <p class="description-book">greate book</p>
+                        </div>
+                    </li>
+                    <!--<li class="list-item">
                         <div class="div-in-item">
                             <img src="" alt="" class="img-book">
                             <h3 class="name-book">Harry Potter</h3>
@@ -58,21 +76,7 @@
                             <h3 class="name-book">Harry Potter</h3>
                             <p class="description-book">greate book</p>
                         </div>
-                    </li>
-                    <li class="list-item">
-                        <div class="div-in-item">
-                            <img src="" alt="" class="img-book">
-                            <h3 class="name-book">Harry Potter</h3>
-                            <p class="description-book">greate book</p>
-                        </div>
-                    </li>
-                    <li class="list-item">
-                        <div class="div-in-item">
-                            <img src="" alt="" class="img-book">
-                            <h3 class="name-book">Harry Potter</h3>
-                            <p class="description-book">greate book</p>
-                        </div>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </section>
@@ -80,4 +84,60 @@
 
     
 </body>
+<script>
+    const searchButton = document.querySelector('#button-search');
+    const listItems = document.querySelector('.list-books');
+
+    let books=[
+        {
+            name:'harry potter',
+            available:true,
+            id: (Math.random() * 100000).toString(),
+        },
+        {
+            name:'dzein eir',
+            available:true,
+            id: (Math.random() * 100000).toString(),
+        },
+        {
+            name:'kobzar',
+            available:true,
+            id: (Math.random() * 100000).toString(),
+        },
+        {
+            name:'history',
+            available:true,
+            id: (Math.random() * 100000).toString(),
+        },
+        {
+            name:'chornobyl',
+            available:true,
+            id: (Math.random() * 100000).toString(),
+        }
+    ]
+    function updateList() {
+        listItems.innerHTML = ''; 
+    }
+    function converter() {
+    const textInput = document.getElementById("search-input").value.trim().toLowerCase();
+    const foundBook = books.find(book => book.name.toLowerCase() === textInput);
+
+    if (foundBook) {
+        const bookHTML = `
+            <li class="list-item">
+                <div class="div-in-item">
+                    <img src="" alt="" class="img-book">
+                    <h3 class="name-book">${foundBook.name}</h3>
+                    <p class="description-book">${foundBook.description}</p>
+                </div>
+            </li>
+        `;
+        updateList(bookHTML);
+    } else {
+        updateList('<p>Книгу не знайдено</p>');
+    }
+}
+
+    searchButton.addEventListener("click", converter);
+</script>
 </html>
