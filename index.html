@@ -87,36 +87,42 @@
 <script>
     const searchButton = document.querySelector('#button-search');
     const listItems = document.querySelector('.list-books');
+    const searchInput = document.querySelector('#search-input');
 
     let books=[
         {
-            name:'harry potter',
+            name:'Harry Potter',
             available:true,
+            description:'Great book',
             id: (Math.random() * 100000).toString(),
         },
         {
-            name:'dzein eir',
+            name:'Dzein Eir',
             available:true,
+            description: 'Bad book',
             id: (Math.random() * 100000).toString(),
         },
         {
-            name:'kobzar',
+            name:'Kobzar',
             available:true,
+            description: 'Interesting book',
             id: (Math.random() * 100000).toString(),
         },
         {
-            name:'history',
+            name:'History',
             available:true,
+            description: 'history book',
             id: (Math.random() * 100000).toString(),
         },
         {
-            name:'chornobyl',
+            name:'Chornobyl',
             available:true,
+            description: '1986 year book',
             id: (Math.random() * 100000).toString(),
         }
     ]
-    function updateList() {
-        listItems.innerHTML = ''; 
+    function updateList(content) {
+        listItems.innerHTML = content; 
     }
     function converter() {
     const textInput = document.getElementById("search-input").value.trim().toLowerCase();
@@ -133,11 +139,17 @@
             </li>
         `;
         updateList(bookHTML);
-    } else {
+    }
+    else {
         updateList('<p>Книгу не знайдено</p>');
     }
 }
 
     searchButton.addEventListener("click", converter);
+    searchInput.addEventListener('keydown', (event) => {
+        if (event.keyCode === 13) {
+            converter();
+        }
+    });
 </script>
 </html>
